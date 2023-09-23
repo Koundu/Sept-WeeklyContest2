@@ -20,8 +20,8 @@ signupBtn.addEventListener('click',(e)=>{
     else{
         saveData(userName.value,email.value,password.value,key);
         console.log(userName.value,email.value,password.value,key);
+        window.location.href = "./Profile.html";
         displayData();
-        e.preventDefault();
     }
 
 })
@@ -46,12 +46,14 @@ function saveData(name,mail,pass,key){
             key
         ]
         localStorage.setItem("user",JSON.stringify(user))
-        window.location.href = "./Profile.html";
       } else {
         alert("No Local Storage support. Use a fallback such as browser cookies or store on the server.")
       }
 }
 
 function displayData(){
-    console.log(localStorage.getItem(user[0]));
+    fName.innerHTML += localStorage.getItem(user[0].value);
+    dispmail.innerHTML += localStorage.getItem(user[1].value);
+    dispToken.innerHTML += localStorage.getItem(user[2].value);
+    dispPass.innerHTML += localStorage.getItem(user[3].value);
 }
